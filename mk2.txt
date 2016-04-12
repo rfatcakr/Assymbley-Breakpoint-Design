@@ -1,0 +1,87 @@
+sstep		staa $90
+
+		stab $91
+		
+		tpa
+		staa $93
+		ldaa $fff5
+		cmpa #$11
+		bne cik2
+
+		LDX #$FB00
+LOOP2	WAI
+		LDAA $FFFF
+		
+		STAA 0,X
+
+		cmpa #$41
+		bne gox112
+		
+		ldaa $90
+		lsra
+		lsra
+		lsra
+		lsra
+		adda #$30
+		inx
+		STAa 0,X
+		ldaa $90
+		anda #$F
+		inx
+		adda #$30
+		STAa 0,X
+	
+gox112 	cmpa #$42
+		bne gox122
+		ldab $91
+		lsrb
+		lsrb
+		lsrb
+		lsrb
+		addb #$30
+		inx
+		STAb 0,X
+		ldab $91
+		andb #$F
+		inx
+		addb #$30
+		STAb 0,X
+
+
+gox122 	cmpa #$43
+		bne atla222
+		ldaa $93
+				
+		lsra
+		lsra
+		lsra
+		lsra
+		LDaa $FB00
+		adda #$2
+		inx
+		STAa 0,X
+		ldaa $93
+		anda #$F
+		inx
+		adda #$30
+		STAa 0,X
+				
+
+atla222	cmpa #$27
+		bne atla12
+		bra cik2	
+atla12	cmpa #$28
+		bne atla22
+		ldaa #$10
+		staa $fff5
+		bra cik2
+atla22	CLRA
+		wai
+		INX
+		INX
+		BRA LOOP2
+		rts
+cik2 		staa $10
+atlar2 		staa $10
+      
+		clra

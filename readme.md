@@ -1,0 +1,1 @@
+This project aims to controll breakpoints writen in ".asm" file and after this points will filled with C program. After completion of process, new ".asm" file can be process on asm compiler and these breakpoints asm compiler wait for inputs from users. These breakpoints defined as fuctions in mk1 and mk2 .txt files.
